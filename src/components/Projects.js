@@ -1,47 +1,135 @@
-// components/Projects.js
 "use client";
-import { motion } from "framer-motion";
 
-const projects = [
-  {
-    title: "Portfolio Website",
-    description: "A personal portfolio built with Next.js and Tailwind CSS.",
-    tech: ["Next.js", "Tailwind CSS", "Framer Motion"],
-    github: "https://github.com/yourrepo",
-    demo: "https://yourportfolio.com",
-    img: "/project1.png"
-  },
-  // Add more projects here
-]
+import { motion } from "framer-motion";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 export default function Projects() {
+  const projects = [
+    {
+      title: "Restaurant Billing System",
+      desc: "Developed a comprehensive restaurant billing system using Java and MySQL, featuring user registration, login, order entry, and automatic bill generation with backend logic implemented via JDBC for efficient data management.",
+      tech: ["Java", "JDBC", "MySQL", "Swing/AWT"],
+      github: "#",
+      category: "Full Stack",
+      highlights: [
+        "User authentication & registration",
+        "Order management system",
+        "Automatic bill calculation",
+        "Database integration with JDBC",
+      ],
+    },
+    {
+      title: "Apple Website Clone",
+      desc: "Created a pixel-perfect clone of Apple's website using modern HTML, CSS, and JavaScript, featuring responsive design and smooth animations.",
+      tech: ["HTML", "CSS", "JavaScript"],
+      demo: "#",
+      category: "Frontend",
+    },
+    {
+      title: "Samsung Website Demo",
+      desc: "Built a professional Samsung website demo showcasing product displays, interactive elements, and modern UI/UX design principles.",
+      tech: ["HTML", "CSS", "JavaScript"],
+      demo: "#",
+      category: "Frontend",
+    },
+    {
+      title: "Netflix Landing Page",
+      desc: "Designed and developed a Netflix-inspired landing page with responsive layout, hero section, and dynamic content sections.",
+      tech: ["HTML", "CSS", "JavaScript"],
+      demo: "#",
+      category: "Frontend",
+    },
+    {
+      title: "Portfolio Website",
+      desc: "Created a personal portfolio website showcasing projects, skills, and professional experience with modern design and animations.",
+      tech: ["HTML", "CSS", "JavaScript"],
+      demo: "#",
+      category: "Frontend",
+    },
+    {
+      title: "Temperature Converter",
+      desc: "Built an interactive temperature converter application supporting Celsius, Fahrenheit, and Kelvin conversions with real-time calculations.",
+      tech: ["HTML", "CSS", "JavaScript"],
+      demo: "#",
+      category: "Frontend",
+    },
+  ];
+
   return (
-    <section id="projects" className="container mx-auto py-20">
-      <h2 className="text-4xl font-bold text-center mb-10">Projects</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-        {projects.map(({title, description, tech, github, demo, img}) => (
-          <motion.div
-            key={title}
-            initial={{opacity:0,y:50}}
-            whileInView={{opacity:1,y:0}}
-            viewport={{once:true}}
-            className="relative bg-gray-800 rounded-lg overflow-hidden shadow-lg cursor-pointer hover:shadow-xl"
-          >
-            <img src={img} alt={title} className="w-full h-48 object-cover"/>
-            <div className="p-6">
-              <h3 className="text-xl font-semibold mb-2">{title}</h3>
-              <p className="text-gray-400 mb-4">{description}</p>
-              <div className="flex flex-wrap gap-2">
-                {tech.map(t => <span key={t} className="bg-blue-700 text-blue-300 px-2 py-1 rounded">{t}</span>)}
+    <section id="projects" className="min-h-screen py-20 scroll-mt-20">
+      <div className="container mx-auto px-4">
+        <h2 className="text-5xl font-bold mb-12 bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
+          Projects
+        </h2>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((proj, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
+              className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl border border-emerald-500/20 hover:border-cyan-400/40 transition-all hover:scale-105 group flex flex-col"
+            >
+              <div className="mb-3">
+                <span className="text-xs px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded-full border border-cyan-500/30">
+                  {proj.category}
+                </span>
               </div>
-              <div className="flex gap-4 mt-4 text-blue-400">
-                <a href={github} target="_blank" className="hover:underline">GitHub</a>
-                <a href={demo} target="_blank" className="hover:underline">Live Demo</a>
+
+              <h3 className="text-xl font-bold text-emerald-400 mb-3 group-hover:text-cyan-400 transition-colors">
+                {proj.title}
+              </h3>
+              
+              <p className="text-slate-300 mb-4 leading-relaxed text-sm flex-grow">
+                {proj.desc}
+              </p>
+
+              {proj.highlights && (
+                <ul className="mb-4 space-y-1">
+                  {proj.highlights.map((highlight, j) => (
+                    <li key={j} className="text-slate-400 text-xs flex gap-2">
+                      <span className="text-emerald-400">✓</span>
+                      {highlight}
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              <div className="flex flex-wrap gap-2 mb-4">
+                {proj.tech.map((t, j) => (
+                  <span
+                    key={j}
+                    className="text-xs px-2 py-1 bg-emerald-500/20 text-emerald-300 rounded-full border border-emerald-500/30"
+                  >
+                    {t}
+                  </span>
+                ))}
               </div>
-            </div>
-          </motion.div>
-        ))}
+
+              <div className="flex gap-4 mt-auto pt-4 border-t border-slate-700">
+                {/* {proj.github && (
+                  <a
+                    href={proj.github}
+                    className="flex items-center gap-2 text-cyan-400 hover:text-emerald-400 transition-colors text-sm"
+                  >
+                    <FaGithub /> Code
+                  </a>
+                )} */}
+                {/* {proj.demo && (
+                  <a
+                    href={proj.demo}
+                    className="flex items-center gap-2 text-cyan-400 hover:text-emerald-400 transition-colors text-sm"
+                  >
+                    <FaExternalLinkAlt /> Demo
+                  </a>
+                )} */}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
-  )
+  );
 }
