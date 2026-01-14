@@ -11,7 +11,7 @@ import Experience from "@/components/Experience"; // NEW
 import Contact from "@/components/Contact";
 
 export const metadata = {
-  title: "My Portfolio",
+  title: "Arun's Portfolio",
   description: "Backend Developer Portfolio",
 };
 
